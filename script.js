@@ -1,5 +1,19 @@
 
 const container = document.getElementById('grid');
+function randomNum(){
+    let randomNum1 = Math.floor(Math.random(0)*256);
+    let randomNum2 = Math.floor(Math.random(0)*256);
+    let randomNum3 = Math.floor(Math.random(0)*256);
+    let array = [randomNum1,randomNum2,randomNum3];
+    return array;
+    
+}
+
+function randomRGB() {
+    const array = randomNum();
+    return  `rgb(${array[0]},${array[1]},${array[2]})`;
+   
+}
 
 
 function defaultGrid(rows,cols){
@@ -27,11 +41,12 @@ function makeCells(rows,cols){
 const cells = document.querySelectorAll('.cell');
 cells.forEach((cell)=> {
     cell.addEventListener('pointerover', (e) => {
-        cell.setAttribute('style','background: black');
+        const rgb = randomRGB();
+        function setRGB(rgb){
+            cell.style.setProperty('--background-color',`${rgb}`);
+       }
+       setRGB(rgb)
     });
 });
-
-
-
 
 
