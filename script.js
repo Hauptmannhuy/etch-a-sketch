@@ -1,7 +1,13 @@
-// let gridSize = 16
-// let rows = gridSize;
-// let cols = gridSize;
-const container = document.getElementById('container');
+
+const container = document.getElementById('grid');
+
+
+function defaultGrid(rows,cols){
+    makeRows(rows,cols);
+    makeCells(rows,cols);
+    
+}
+defaultGrid(16,16)
 
 function makeRows(rows,cols){
     container.style.setProperty('--grid-template-rows', rows);
@@ -18,8 +24,12 @@ function makeCells(rows,cols){
    
 }
 
-makeCells(16,16);
-makeRows(16,16)
+const cells = document.querySelectorAll('.cell');
+cells.forEach((cell)=> {
+    cell.addEventListener('pointerover', (e) => {
+        cell.setAttribute('style','background: black');
+    });
+});
 
 
 

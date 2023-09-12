@@ -1,6 +1,11 @@
-
-
-#container {
+body {
+    height: 100vh;
+}
+#container{
+    display: flex;
+    justify-content: center;
+}
+#grid {
     
     border: black;
     border-width: thin;
@@ -9,7 +14,7 @@
    
     grid-template-columns: repeat(var(--grid-template-columns),1fr);
     grid-template-rows: repeat(var(--grid-template-rows,1fr));
-    max-width: 600px;
+    width: 600px;
     height: 600px;
 
    
