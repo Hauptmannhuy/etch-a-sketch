@@ -29,7 +29,8 @@ body {
 #GUI {
     display: flex;
     justify-content: space-evenly;
-    padding: 10px;
+    padding: 18px;
+    
 }
 
 .cell {
