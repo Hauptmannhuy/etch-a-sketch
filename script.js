@@ -57,25 +57,20 @@ buttons.forEach((button)=> {
         let target = e.target;
         if (target.id === 'normalBtn'){
             currentMode = 'normal';
-            console.log('normal')
         }
         else if (target.id === 'rainbowBtn'){
             currentMode = 'rainbow';
-            console.log('rainbow')
+
         }
         else if (target.id === 'sketchBtn'){
             currentMode = 'sketch';
-            console.log('sketch')
+
         }
         else {
             return;
         };
     });
 });
-
-  
-
-
       
     container.addEventListener('pointerover', (e) => {
     let target = e.target;
@@ -93,11 +88,6 @@ buttons.forEach((button)=> {
             }
     }
 })
-
-
-   
-
-
 
 const clearBtn = document.getElementById('clearBtn');
 const cells = document.querySelectorAll('.cell');
