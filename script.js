@@ -1,13 +1,10 @@
-
 const container = document.getElementById('grid');
 const adjustBtn = document.getElementById('adjustBtn');
 const rainbowBtn = document.getElementById('rainbowBtn');
 const normalBtn = document.getElementById('normalBtn');
 const sketchBtn = document.getElementById('sketchBtn');
-let isNormal = false;
-let isRainbow = false;
-let isSketch = false;
-
+const buttons = document.querySelectorAll('button');
+let currentMode = 'normal';
 
 
 function defaultGrid(rows,cols){
@@ -55,71 +52,50 @@ function randomRGB() {
    
 }
 
-container.addEventListener('pointerenter', (e)=> {
-    let target = e.target;
-    if(target.classList.contains('cell') === true){
-        target.style.background = 'black';
-    };
+buttons.forEach((button)=> {
+    button.addEventListener('click', (e)=> {
+        let target = e.target;
+        if (target.id === 'normalBtn'){
+            currentMode = 'normal';
+            console.log('normal')
+        }
+        else if (target.id === 'rainbowBtn'){
+            currentMode = 'rainbow';
+            console.log('rainbow')
+        }
+        else if (target.id === 'sketchBtn'){
+            currentMode = 'sketch';
+            console.log('sketch')
+        }
+        else {
+            return;
+        };
+    });
 });
 
+  
 
-    rainbowBtn.addEventListener('click', ()=> {
-        isNormal = false;
-        isSketch = false;
-        isRainbow = true;
 
-       if (isRainbow){
-        function rainbowMode(){
+      
     container.addEventListener('pointerover', (e) => {
     let target = e.target;
     if (target.classList.contains('cell') === true){
         const rgb = randomRGB();
-        function setRGB(rgb){
-            // target.classList.replace('cell', 'new-cell')
-            // target.style.setProperty('--background-color',`${rgb}`);
-            target.style.background = rgb;
-       }
-       setRGB(rgb);
+        
+            if (currentMode === 'normal'){
+                target.style.backgroundColor = 'black';
+            }
+            else if (currentMode === 'rainbow'){
+                target.style.backgroundColor = rgb
+            }
+            else if (currentMode === 'sketch'){
+                target.style.backgroundColor = 'white';
+            }
     }
 })
-}
-rainbowMode();
-       }  
-    })
-   
-normalBtn.addEventListener('click', ()=>{
-    isRainbow = false;
-    isSketch = false;
-    isNormal = true;
-    if(isNormal){
-         function normalMode(){
-        container.addEventListener('pointerenter', (e)=> {
-            let target = e.target;
-            if(target.classList.contains('cell') === true){
-                target.style.background = 'black';
-            };
-        });
-    };
-    normalMode();
-    };
-});
 
-sketchBtn.addEventListener('click', ()=>{
-    isRainbow = false;
-    isNormal = false;
-    isSketch = true;
-    if(isSketch){
-         function sketchMode(){
-        container.addEventListener('pointerenter', (e)=> {
-            let target = e.target;
-            if(target.classList.contains('cell') === true){
-                target.style.background = 'white';
-            };
-        });
-    };
-    sketchMode();
-    };
-});
+
+   
 
 
 
