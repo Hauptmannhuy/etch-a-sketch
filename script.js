@@ -1,7 +1,9 @@
 
 const container = document.getElementById('grid');
 const adjustBtn = document.getElementById('adjustBtn');
-
+const rainbowBtn = document.getElementById('rainbowBtn');
+const normalBtn = document.getElementById('normalBtn');
+const sketchBtn = document.getElementById('sketchBtn');
 let isNormal = false;
 let isRainbow = false;
 let isSketch = false;
@@ -53,7 +55,22 @@ function randomRGB() {
    
 }
 
-container.addEventListener('pointerover', (e) => {
+container.addEventListener('pointerenter', (e)=> {
+    let target = e.target;
+    if(target.classList.contains('cell') === true){
+        target.style.background = 'black';
+    };
+});
+
+
+    rainbowBtn.addEventListener('click', ()=> {
+        isNormal = false;
+        isSketch = false;
+        isRainbow = true;
+
+       if (isRainbow){
+        function rainbowMode(){
+    container.addEventListener('pointerover', (e) => {
     let target = e.target;
     if (target.classList.contains('cell') === true){
         const rgb = randomRGB();
@@ -62,9 +79,50 @@ container.addEventListener('pointerover', (e) => {
             // target.style.setProperty('--background-color',`${rgb}`);
             target.style.background = rgb;
        }
-       setRGB(rgb)
+       setRGB(rgb);
     }
 })
+}
+rainbowMode();
+       }  
+    })
+   
+normalBtn.addEventListener('click', ()=>{
+    isRainbow = false;
+    isSketch = false;
+    isNormal = true;
+    if(isNormal){
+         function normalMode(){
+        container.addEventListener('pointerenter', (e)=> {
+            let target = e.target;
+            if(target.classList.contains('cell') === true){
+                target.style.background = 'black';
+            };
+        });
+    };
+    normalMode();
+    };
+});
+
+sketchBtn.addEventListener('click', ()=>{
+    isRainbow = false;
+    isNormal = false;
+    isSketch = true;
+    if(isSketch){
+         function sketchMode(){
+        container.addEventListener('pointerenter', (e)=> {
+            let target = e.target;
+            if(target.classList.contains('cell') === true){
+                target.style.background = 'white';
+            };
+        });
+    };
+    sketchMode();
+    };
+});
+
+
+
 const clearBtn = document.getElementById('clearBtn');
 const cells = document.querySelectorAll('.cell');
 clearBtn.addEventListener('click', () => {
