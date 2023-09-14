@@ -2,6 +2,11 @@
 const container = document.getElementById('grid');
 const adjustBtn = document.getElementById('adjustBtn');
 
+let isNormal = false;
+let isRainbow = false;
+let isSketch = false;
+
+
 
 function defaultGrid(rows,cols){
     container.innerHTML = '';
@@ -32,7 +37,6 @@ adjustBtn.addEventListener('click', (e) => {
 })
 
 
-
 function randomNum(){
     let randomNum1 = Math.floor(Math.random(0)*256);
     let randomNum2 = Math.floor(Math.random(0)*256);
@@ -54,23 +58,18 @@ container.addEventListener('pointerover', (e) => {
     if (target.classList.contains('cell') === true){
         const rgb = randomRGB();
         function setRGB(rgb){
-            target.style.setProperty('--background-color',`${rgb}`);
+            // target.classList.replace('cell', 'new-cell')
+            // target.style.setProperty('--background-color',`${rgb}`);
+            target.style.background = rgb;
        }
        setRGB(rgb)
     }
 })
-
-
-// const cells = document.querySelectorAll('.cell');
-// cells.forEach((cell)=> {
-//     cell.addEventListener('pointerover', (e) => {
-//         const rgb = randomRGB();
-//         function setRGB(rgb){
-//             cell.style.setProperty('--background-color',`${rgb}`);
-//        }
-//        setRGB(rgb)
-//     });
-// });
-
-
+const clearBtn = document.getElementById('clearBtn');
+const cells = document.querySelectorAll('.cell');
+clearBtn.addEventListener('click', () => {
+    cells.forEach((cell)=> {
+        cell.style.backgroundColor = 'white';
+    });
+});
 
