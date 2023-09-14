@@ -14,8 +14,10 @@ body {
    
     grid-template-columns: repeat(var(--grid-template-columns),1fr);
     grid-template-rows: repeat(var(--grid-template-rows,1fr));
-    width: 600px;
-    height: 600px;
+
+    width: 575px;
+    height: 575px;
+    
 
 }
 
@@ -37,10 +39,4 @@ body {
  
     
    
-}
-
-.new-cell {
-    padding: 5px;
-    border: 1px solid black;
-
 }

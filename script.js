@@ -6,8 +6,7 @@ const sketchBtn = document.getElementById('sketchBtn');
 const buttons = document.querySelectorAll('button');
 let currentMode = 'normal';
 
-
-function defaultGrid(rows,cols){
+function defaultGrid(rows,cols){            // makes grid
     container.innerHTML = '';
     makeRows(rows,cols);
     makeCells(rows,cols);
@@ -30,11 +29,17 @@ function makeCells(rows,cols){
    
 }
 
-adjustBtn.addEventListener('click', (e) => {
+adjustBtn.addEventListener('click', (e) => {        // adjusting grid
     let value = prompt('Enter a number');
+    const cellWidth = container.offsetWidth / value;
+    const cellHeight = container.offsetHeight / value;
+    const items = document.querySelectorAll('.cell');
+    items.forEach((item)=>{
+        item.style.width = cellWidth+'px';
+        item.style.height = cellHeight+'px';
+    })
     defaultGrid(value,value);
 })
-
 
 function randomNum(){
     let randomNum1 = Math.floor(Math.random(0)*256);
@@ -45,14 +50,13 @@ function randomNum(){
     
 }
 
-
-function randomRGB() {
+function randomRGB() {                           //generates random num and makes random rgb
     const array = randomNum();
     return  `rgb(${array[0]},${array[1]},${array[2]})`;
    
 }
 
-buttons.forEach((button)=> {
+buttons.forEach((button)=> {                  //set color
     button.addEventListener('click', (e)=> {
         let target = e.target;
         if (target.id === 'normalBtn'){
@@ -64,15 +68,13 @@ buttons.forEach((button)=> {
         }
         else if (target.id === 'sketchBtn'){
             currentMode = 'sketch';
-
         }
         else {
             return;
         };
     });
-});
-      
-    container.addEventListener('pointerover', (e) => {
+}); 
+    container.addEventListener('pointerover', (e) => {      //drawing
     let target = e.target;
     if (target.classList.contains('cell') === true){
         const rgb = randomRGB();
@@ -85,15 +87,13 @@ buttons.forEach((button)=> {
             }
             else if (currentMode === 'sketch'){
                 target.style.backgroundColor = 'white';
-            }
+              }
     }
 })
-
-const clearBtn = document.getElementById('clearBtn');
-const cells = document.querySelectorAll('.cell');
+const clearBtn = document.getElementById('clearBtn');   //clear grid
 clearBtn.addEventListener('click', () => {
+    const cells = document.querySelectorAll('.cell');
     cells.forEach((cell)=> {
-        cell.style.backgroundColor = 'white';
+        cell.style.backgroundColor = '';
     });
 });
-
