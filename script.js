@@ -77,11 +77,11 @@ buttons.forEach((button)=> {                  //set color
     });
 }); 
 
-container.addEventListener('mousedown', (e)=>{
+container.addEventListener('pointerdown', (e)=>{
     isDrawing = true;
 });
 
-container.addEventListener('mouseover', (e)=>{
+container.addEventListener('pointerover', (e)=>{
     if(isDrawing){
         let target = e.target;
         if (target.classList.contains('cell') === true){
@@ -98,7 +98,7 @@ container.addEventListener('mouseover', (e)=>{
         }
     }
 })
-window.addEventListener("mouseup", (e) => {
+window.addEventListener("pointerup", (e) => {
     isDrawing = false;
 });
 
