@@ -7,6 +7,7 @@ const buttons = document.querySelectorAll('button');
 let currentMode = 'normal';
 let isDrawing = false;
 
+
 function defaultGrid(rows,cols){            // makes grid
     container.innerHTML = '';
     makeRows(rows,cols);
@@ -75,30 +76,14 @@ buttons.forEach((button)=> {                  //set color
         };
     });
 }); 
-//     container.addEventListener('pointerover', (e) => {      //drawing
-//      let target = e.target;
-//     if (target.classList.contains('cell') === true){
-//         const rgb = randomRGB();
-        
-//             if (currentMode === 'normal'){
-//                 target.style.backgroundColor = 'black';
-//             }
-//             else if (currentMode === 'rainbow'){
-//                 target.style.backgroundColor = rgb
-//             }
-//             else if (currentMode === 'sketch'){
-//                 target.style.backgroundColor = 'white';
-//               }
-//     }
-// })
 
 container.addEventListener('mousedown', (e)=>{
     isDrawing = true;
 });
 
 container.addEventListener('mouseover', (e)=>{
-    let target = e.target;
     if(isDrawing){
+        let target = e.target;
         if (target.classList.contains('cell') === true){
             const rgb = randomRGB();
             if (currentMode === 'normal'){

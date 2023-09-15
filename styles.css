@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Mooli&family=Roboto:ital,wght@0,400;1,100;1,300&display=swap');
+
 body {
     height: 100vh;
+    background-color: rgb(230, 213, 193);
+    font-family: 'Mooli', sans-serif;
+    display:flex;
+    flex-direction: column;
+    margin:0;
 }
 #container{
     display: flex;
@@ -10,33 +17,61 @@ body {
     border: black;
     border-width: thin;
     border-style: solid;
+    box-shadow: 4px 0px 4px 3px rgba(0, 0, 0, 0.3);
     display: grid;
-   
+   background-color: white;
     grid-template-columns: repeat(var(--grid-template-columns),1fr);
     grid-template-rows: repeat(var(--grid-template-rows,1fr));
-
     width: 575px;
     height: 575px;
-    
-
 }
 
 #title {
     display: flex;
     justify-content: center;
+    color:black;
+    font-size: 40px;
 }
 
 #GUI {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     padding: 18px;
-
+    margin-bottom: 10px;
+    gap: 25px;
 }
 
 .cell {
    padding: 5px;
-   border: 1px solid black;
- 
-    
-   
+   /* border: 1px solid black; */
 }
+
+button {
+    background-color: #ca9075;
+    padding: 12px 24px;
+    border: none;
+    border-radius:8px;
+    color: #F9FAF8;
+    font-size: 16px;
+    font-weight: bolder;
+    transition-duration: 0.3s;
+}
+
+button:hover {
+    background-color: #e2a78b; /* Green */
+    color: white;
+  }
+
+  button:active {
+    background-color: #e29672;
+    transform: translateY(2px);
+  }
+
+  #footer{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #a8765abb;
+    margin-top: 20px;
+    border-radius: 3px;
+  }
