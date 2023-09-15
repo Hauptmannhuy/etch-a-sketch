@@ -43,7 +43,7 @@ body {
 
 .cell {
    padding: 5px;
-   /* border: 1px solid black; */
+ 
 }
 
 button {
@@ -58,7 +58,7 @@ button {
 }
 
 button:hover {
-    background-color: #e2a78b; /* Green */
+    background-color: #e2a78b; 
     color: white;
   }
 
@@ -71,11 +71,13 @@ button:hover {
     display: flex;
     justify-content: center;
     padding: 20px;
-    background-color: #a8765abb;
+    
     margin-top: 20px;
     border-radius: 3px;
     gap: 7px;
     bottom: 0;
-    width: 100%;
+    width: fit-content;
     font-size:24px;
+    margin-left: auto;
+    margin-right: auto;
   }
