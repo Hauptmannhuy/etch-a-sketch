@@ -11,9 +11,10 @@ body {
 #container{
     display: flex;
     justify-content: center;
+
 }
 #grid {
-    
+
     border: black;
     border-width: thin;
     border-style: solid;
@@ -43,7 +44,7 @@ body {
 
 .cell {
    padding: 5px;
-   /* border: 1px solid black; */
+   /* border: 1px solid black; /
 }
 
 button {
@@ -58,7 +59,7 @@ button {
 }
 
 button:hover {
-    background-color: #e2a78b; /* Green */
+    background-color: #e2a78b; / Green */
     color: white;
   }
 
@@ -68,10 +69,12 @@ button:hover {
   }
 
   #footer{
-    display: flex;
-    justify-content: center;
+    text-align: center;
     padding: 20px;
     background-color: #a8765abb;
-    margin-top: 20px;
+    font-size: 25px;
     border-radius: 3px;
+    position: fixed;
+    bottom: 0;
+    width:100%
   }
