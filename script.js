@@ -5,6 +5,7 @@ const normalBtn = document.getElementById('normalBtn');
 const sketchBtn = document.getElementById('sketchBtn');
 const buttons = document.querySelectorAll('button');
 let currentMode = 'normal';
+let isDrawing = false;
 
 function defaultGrid(rows,cols){            // makes grid
     container.innerHTML = '';
@@ -74,11 +75,32 @@ buttons.forEach((button)=> {                  //set color
         };
     });
 }); 
-    container.addEventListener('pointerover', (e) => {      //drawing
-    let target = e.target;
-    if (target.classList.contains('cell') === true){
-        const rgb = randomRGB();
+//     container.addEventListener('pointerover', (e) => {      //drawing
+//      let target = e.target;
+//     if (target.classList.contains('cell') === true){
+//         const rgb = randomRGB();
         
+//             if (currentMode === 'normal'){
+//                 target.style.backgroundColor = 'black';
+//             }
+//             else if (currentMode === 'rainbow'){
+//                 target.style.backgroundColor = rgb
+//             }
+//             else if (currentMode === 'sketch'){
+//                 target.style.backgroundColor = 'white';
+//               }
+//     }
+// })
+
+container.addEventListener('mousedown', (e)=>{
+    isDrawing = true;
+});
+
+container.addEventListener('mouseover', (e)=>{
+    let target = e.target;
+    if(isDrawing){
+        if (target.classList.contains('cell') === true){
+            const rgb = randomRGB();
             if (currentMode === 'normal'){
                 target.style.backgroundColor = 'black';
             }
@@ -88,8 +110,13 @@ buttons.forEach((button)=> {                  //set color
             else if (currentMode === 'sketch'){
                 target.style.backgroundColor = 'white';
               }
+        }
     }
 })
+window.addEventListener("mouseup", (e) => {
+    isDrawing = false;
+});
+
 const clearBtn = document.getElementById('clearBtn');   //clear grid
 clearBtn.addEventListener('click', () => {
     const cells = document.querySelectorAll('.cell');
