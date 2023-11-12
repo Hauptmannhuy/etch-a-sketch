@@ -33,6 +33,9 @@ function makeCells(rows,cols){
 
 adjustBtn.addEventListener('click', (e) => {        // adjusting grid
     let value = prompt('Enter a number');
+   while (value < 1) {
+    value = prompt('Enter a number')
+   }
     const cellWidth = container.offsetWidth / value;
     const cellHeight = container.offsetHeight / value;
     const items = document.querySelectorAll('.cell');
@@ -77,11 +80,11 @@ buttons.forEach((button)=> {                  //set color
     });
 }); 
 
-container.addEventListener('mousedown', (e)=>{
+container.addEventListener('pointerdown', (e)=>{
     isDrawing = true;
 });
 
-container.addEventListener('mouseover', (e)=>{
+container.addEventListener('pointerover', (e)=>{
     if(isDrawing){
         let target = e.target;
         if (target.classList.contains('cell') === true){
@@ -98,7 +101,7 @@ container.addEventListener('mouseover', (e)=>{
         }
     }
 })
-window.addEventListener("mouseup", (e) => {
+window.addEventListener("pointerup", (e) => {
     isDrawing = false;
 });
 
